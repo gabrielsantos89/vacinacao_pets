@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:tela3projeto/telacadastrovacina.dart';
+import 'package:tela3projeto/cadastro/telacadastrovacina.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
