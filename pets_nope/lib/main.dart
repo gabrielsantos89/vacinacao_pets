@@ -10,10 +10,10 @@ Future main() async {
   await PetSheetsApi.init();
   await VaccineSheetsApi.init();
 
-  runApp(MyApp());
+  runApp(PetsNope());
 }
 
-class MyApp extends StatelessWidget {
+class PetsNope extends StatelessWidget {
   static final String title = 'Pets Nope';
 
   @override
@@ -34,16 +34,19 @@ class _MainPageState extends State<MainPage> {
   int index = 0;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    bottomNavigationBar: buildBottomBar(),
-    body: buildPages(),
-  );
+  Widget build(BuildContext context) =>
+      Scaffold(
+        bottomNavigationBar: buildBottomBar(),
+        body: buildPages(),
+      );
 
   Widget buildBottomBar() {
     final style = TextStyle(color: Colors.white);
 
     return BottomNavigationBar(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme
+          .of(context)
+          .primaryColor,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white70,
       currentIndex: index,

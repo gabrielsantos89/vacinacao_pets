@@ -14,7 +14,7 @@ class CreateVaccinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text(MyApp.title),
+      title: Text(PetsNope.title),
       centerTitle: true,
     ),
     body: Builder(
@@ -26,9 +26,9 @@ class CreateVaccinePage extends StatelessWidget {
             petId: petId,
             onSavedVaccine: (vaccine) async {
               final id = await VaccineSheetsApi.getRowCount() + 1;
-              final newUser = vaccine.copy(id: id);
+              final newVaccine = vaccine.copy(id: id);
 
-              await VaccineSheetsApi.insert([newUser.toJson()]);
+              await VaccineSheetsApi.insert([newVaccine.toJson()]);
 
               final snackBar = SnackBar(
                 content: Text('Vaccine Added Succefully!'),

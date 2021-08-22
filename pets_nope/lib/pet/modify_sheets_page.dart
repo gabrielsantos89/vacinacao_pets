@@ -36,7 +36,7 @@ class _ModifySheetsPageState extends State<ModifySheetsPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text(MyApp.title),
+      title: Text(PetsNope.title),
       centerTitle: true,
     ),
     body: Center(
@@ -76,7 +76,7 @@ class _ModifySheetsPageState extends State<ModifySheetsPage> {
         onClicked: modifyVaccine,
       ),
       const SizedBox(height: 16),
-      NavigatPetsWidget(
+      NavigatePetsWidget(
         text: '${index + 1}/${pets.length} Pets',
         onClickedNext: () {
           final nextIndex = index >= pets.length - 1 ? 0 : index + 1;

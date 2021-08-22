@@ -7,7 +7,7 @@ class CreateSheetsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text(MyApp.title),
+      title: Text(PetsNope.title),
       centerTitle: true,
     ),
     body: Builder(
@@ -18,9 +18,9 @@ class CreateSheetsPage extends StatelessWidget {
           child: PetFormWidget(
             onSavedPet: (pet) async {
               final id = await PetSheetsApi.getRowCount() + 1;
-              final newUser = pet.copy(id: id);
+              final newPet = pet.copy(id: id);
 
-              await PetSheetsApi.insert([newUser.toJson()]);
+              await PetSheetsApi.insert([newPet.toJson()]);
 
               final snackBar = SnackBar(
                 content: Text('Pet Added Succefully!'),

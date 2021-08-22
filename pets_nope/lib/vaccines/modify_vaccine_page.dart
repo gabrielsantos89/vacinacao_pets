@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:petz_noop/vaccines/vaccine_form_widget.dart';
-import 'package:petz_noop/vaccines/vaccine_sheets_api.dart';
-import 'package:petz_noop/vaccines/vaccines.dart';
+import 'vaccines.dart';
+import 'vaccine_sheets_api.dart';
 import '../main.dart';
 import '../button_widget.dart';
 import '../pet/navigate_pets_widget.dart';
+import 'vaccine_form_widget.dart';
+
 class ModifyVaccinePage extends StatefulWidget {
 
   final int petId;
@@ -29,18 +30,23 @@ class _ModifyVaccinePageState extends State<ModifyVaccinePage> {
   }
 
   Future getVaccines({int index = 0}) async {
-    final vaccines = await VaccineSheetsApi.getByFk(widget.petId);
+    vaccines = await VaccineSheetsApi.getAll();
+    List<Vaccine> newVaccineList = [];
+    for(int i=0;i<vaccines.length;i++) {
+      if(vaccines[i].fk == widget.petId)
+        newVaccineList.add(vaccines[i]);
+    }
 
     setState(() {
       this.index = index;
-      this.vaccines = vaccines;
+      this.vaccines = newVaccineList;
     });
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text("Modify"),
+      title: Text(PetsNope.title),
       centerTitle: true,
     ),
     body: Center(
@@ -71,7 +77,7 @@ class _ModifyVaccinePageState extends State<ModifyVaccinePage> {
         onClicked: deleteVaccine,
       ),
       const SizedBox(height: 16),
-      NavigatPetsWidget(
+      NavigatePetsWidget(
         text: '${index + 1}/${vaccines.length} Vaccines',
         onClickedNext: () {
           final nextIndex = index >= vaccines.length - 1 ? 0 : index + 1;

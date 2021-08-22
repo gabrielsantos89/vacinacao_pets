@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NavigatPetsWidget extends StatelessWidget {
+class NavigatePetsWidget extends StatelessWidget {
   final String text;
   final VoidCallback onClickedPrevious;
   final VoidCallback onClickedNext;
 
-  const NavigatPetsWidget({
+  const NavigatePetsWidget({
     Key? key,
     required this.text,
     required this.onClickedPrevious,
