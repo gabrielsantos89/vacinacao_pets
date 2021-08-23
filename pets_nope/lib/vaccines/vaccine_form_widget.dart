@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'vaccines.dart';
+import 'vaccine.dart';
 import '../button_widget.dart';
 
 class VaccinesFormWidget extends StatefulWidget {
@@ -19,10 +19,10 @@ class VaccinesFormWidget extends StatefulWidget {
 }
 
 class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
-  final formKey = GlobalKey<FormState>();
+  final vaccineKey = GlobalKey<FormState>();
   late TextEditingController controllerVaccine;
-  late TextEditingController controllerDate;
-  late TextEditingController controllerExpirationDate;
+  late TextEditingController controllerApplication;
+  late TextEditingController controllerExpiration;
   late TextEditingController controllerVet;
 
   @override
@@ -41,20 +41,20 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
 
   void initVaccines() {
     final vaccine = widget.vaccine == null ? '' : widget.vaccine!.vaccine;
-    final date = widget.vaccine == null ? '' : widget.vaccine!.date;
-    final expirationDate = widget.vaccine == null ? '' : widget.vaccine!.expirationDate;
+    final date = widget.vaccine == null ? '' : widget.vaccine!.application;
+    final expirationDate = widget.vaccine == null ? '' : widget.vaccine!.expiration;
     final vet = widget.vaccine == null ? '' : widget.vaccine!.vet;
     setState(() {
       controllerVaccine = TextEditingController(text: vaccine);
-      controllerDate = TextEditingController(text: date);
-      controllerExpirationDate = TextEditingController(text: expirationDate);
+      controllerApplication = TextEditingController(text: date);
+      controllerExpiration = TextEditingController(text: expirationDate);
       controllerVet = TextEditingController(text: vet);
     });
   }
 
   @override
   Widget build(BuildContext context) => Form(
-    key: formKey,
+    key: vaccineKey,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -82,10 +82,9 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
   );
 
   Widget buildDate() => TextFormField(
-    keyboardType: TextInputType.datetime,
-    controller: controllerDate,
+    controller: controllerApplication,
     decoration: InputDecoration(
-      labelText: 'Date',
+      labelText: 'Application Date',
       border: OutlineInputBorder(),
     ),
     validator: (value) =>
@@ -93,7 +92,7 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
   );
 
   Widget buildExpirationDate() => TextFormField(
-    controller: controllerExpirationDate,
+    controller: controllerExpiration,
     decoration: InputDecoration(
       labelText: 'Expiration Date',
       border: OutlineInputBorder(),
@@ -103,7 +102,7 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
   );
 
   Widget buildVet() => TextFormField(
-    keyboardType: TextInputType.number,
+    keyboardType: TextInputType.text,
     controller: controllerVet,
     decoration: InputDecoration(
       labelText: 'Vet',
@@ -117,7 +116,7 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
   Widget buildSubmit() => ButtonWidget(
     text: 'Save',
     onClicked: () {
-      final form = formKey.currentState!;
+      final form = vaccineKey.currentState!;
       final isValid = form.validate();
 
       if (isValid) {
@@ -126,8 +125,8 @@ class _VaccinesFormWidgetState extends State<VaccinesFormWidget> {
           id: id,
           fk: widget.petId,
           vaccine: controllerVaccine.text,
-          date: controllerDate.text,
-          expirationDate: controllerExpirationDate.text,
+          application: controllerApplication.text,
+          expiration: controllerExpiration.text,
           vet: controllerVet.text,
         );
         widget.onSavedVaccine(vaccine);

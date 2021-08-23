@@ -4,27 +4,27 @@ class VaccineFields {
   static final String id = 'id';
   static final String fk = 'fk';
   static final String vaccine = 'vaccine';
-  static final String date = 'date';
-  static final String expirationDate = 'expirationDate';
+  static final String application = 'application';
+  static final String expiration = 'expiration';
   static final String vet = 'vet';
 
-  static List<String> getFields() => [id, fk, vaccine, date, expirationDate, vet,];
+  static List<String> getFields() => [id, fk, vaccine, application, expiration, vet];
 }
 
 class Vaccine {
   final int? id;
   final int fk;
   final String vaccine;
-  final String date;
-  final String expirationDate;
+  final String application;
+  final String expiration;
   final String vet;
 
   const Vaccine({
     this.id,
     required this.fk,
     required this.vaccine,
-    required this.date,
-    required this.expirationDate,
+    required this.application,
+    required this.expiration,
     required this.vet,
   });
 
@@ -32,16 +32,16 @@ class Vaccine {
     int? id,
     int? fk,
     String? vaccine,
-    String? date,
-    String? expirationDate,
+    String? application,
+    String? expiration,
     String? vet,
   }) =>
       Vaccine(
         id: id ?? this.id,
         fk: fk ?? this.fk,
         vaccine: vaccine ?? this.vaccine,
-        date: date ?? this.date,
-        expirationDate: expirationDate ?? this.expirationDate,
+        application: application ?? this.application,
+        expiration: expiration ?? this.expiration,
         vet: vet ?? this.vet,
 
       );
@@ -50,8 +50,8 @@ class Vaccine {
     id: jsonDecode(json[VaccineFields.id]),
     fk: jsonDecode(json[VaccineFields.fk]),
     vaccine: json[VaccineFields.vaccine],
-    date: json[VaccineFields.date],
-    expirationDate: json[VaccineFields.expirationDate],
+    application: json[VaccineFields.application],
+    expiration: json[VaccineFields.expiration],
     vet: json[VaccineFields.vet],
   );
 
@@ -59,8 +59,9 @@ class Vaccine {
     VaccineFields.id: id,
     VaccineFields.fk: fk,
     VaccineFields.vaccine: vaccine,
-    VaccineFields.date: date,
-    VaccineFields.expirationDate: expirationDate,
+    VaccineFields.application: application,
+    VaccineFields.expiration: expiration,
     VaccineFields.vet: vet,
   };
+
 }

@@ -136,7 +136,7 @@ class _PetFormWidgetState extends State<PetFormWidget> {
 
       if (isValid) {
         final id = widget.pet == null ? null : widget.pet!.id;
-        final user = Pet(
+        final pet = Pet(
           id: id,
           name: controllerName.text,
           race: controllerRace.text,
@@ -144,7 +144,7 @@ class _PetFormWidgetState extends State<PetFormWidget> {
           weight: double.parse(controllerWeight.text),
           age: int.parse(controllerAge.text),
         );
-        widget.onSavedPet(user);
+        widget.onSavedPet(pet);
       }
     },
   );

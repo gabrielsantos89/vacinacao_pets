@@ -1,4 +1,4 @@
-import 'vaccines.dart';
+import 'vaccine.dart';
 import 'package:gsheets/gsheets.dart';
 
 class VaccineSheetsApi {
@@ -56,6 +56,7 @@ class VaccineSheetsApi {
     final vaccines = await _vaccineSheet!.values.map.allRows();
     return vaccines == null ? <Vaccine>[] : vaccines.map(Vaccine.fromJson).toList();
   }
+
   static Future<List<Vaccine>> getByFk(int fk) async {
     if (_vaccineSheet == null) return <Vaccine>[];
 
