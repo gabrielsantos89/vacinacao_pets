@@ -3,6 +3,7 @@ import 'pet/create_sheets_page.dart';
 import 'pet/pet_sheets_api.dart';
 import 'vaccines/vaccine_sheets_api.dart';
 import 'pet/modify_sheets_page.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,15 @@ class PetsNope extends StatelessWidget {
     debugShowCheckedModeBanner: false,
     title: title,
     theme: ThemeData(primarySwatch: Colors.blue),
-    home: MainPage(),
+    home: AnimatedSplashScreen(
+      duration: 3000,
+      splash: 'image/sp.png',
+      nextScreen: MainPage(),
+      splashTransition: SplashTransition.sizeTransition,
+
+
+
+    ),
   );
 }
 

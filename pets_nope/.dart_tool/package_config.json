@@ -8,6 +8,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "animated_splash_screen",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/animated_splash_screen-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.1",
       "packageUri": "lib/",
@@ -116,6 +122,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "page_transition",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-2.0.1-nullsafety.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
       "packageUri": "lib/",
@@ -188,7 +200,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-08-22T19:13:50.986548Z",
+  "generated": "2021-08-23T03:15:58.818177Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
