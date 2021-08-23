@@ -23,10 +23,10 @@ class PetsNope extends StatelessWidget {
     title: title,
     theme: ThemeData(primarySwatch: Colors.blue),
     home: AnimatedSplashScreen(
-      duration: 3000,
+      duration: 2500,
       splash: 'image/sp.png',
       nextScreen: MainPage(),
-      splashTransition: SplashTransition.sizeTransition,
+      splashTransition: SplashTransition.scaleTransition,
 
 
 

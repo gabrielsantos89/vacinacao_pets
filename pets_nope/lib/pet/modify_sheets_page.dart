@@ -7,6 +7,8 @@ import '../main.dart';
 import '../button_widget.dart';
 import '../vaccines/create_vaccine_page.dart';
 import '../vaccines/modify_vaccine_page.dart';
+import '../vaccines/vaccine.dart';
+import '../vaccines/vaccine_sheets_api.dart';
 
 class ModifySheetsPage extends StatefulWidget {
   @override
@@ -96,6 +98,7 @@ class _ModifySheetsPageState extends State<ModifySheetsPage> {
   Future deletePet() async {
     final pet = pets[index];
 
+    deleteVaccines();
     await PetSheetsApi.deleteById(pet.id!);
 
     /// Just for updating UI
@@ -111,5 +114,19 @@ class _ModifySheetsPageState extends State<ModifySheetsPage> {
   Future modifyVaccine() async {
     final petId = pets[index].id;
     Navigator.push(context, MaterialPageRoute(builder: (context) => ModifyVaccinePage(petId: petId!,)));
+  }
+
+  Future deleteVaccines() async {
+
+    List<Vaccine> vaccines = [];
+
+    vaccines = await VaccineSheetsApi.getAll();
+    if(vaccines.isNotEmpty){
+      for (int i = 0; i <= vaccines.length; i++) {
+        if (vaccines[i].fk == pets[index].id)
+          VaccineSheetsApi.deleteById(vaccines[i].id!);
+      }
+    }
+
   }
 }

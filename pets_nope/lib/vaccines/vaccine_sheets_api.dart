@@ -57,12 +57,6 @@ class VaccineSheetsApi {
     return vaccines == null ? <Vaccine>[] : vaccines.map(Vaccine.fromJson).toList();
   }
 
-  static Future<List<Vaccine>> getByFk(int fk) async {
-    if (_vaccineSheet == null) return <Vaccine>[];
-
-    final vaccines = await _vaccineSheet!.values.map.allRows();
-    return vaccines == null ? <Vaccine>[] : vaccines.map(Vaccine.fromJson).toList();
-  }
   static Future<Vaccine?> getById(int id) async {
     if (_vaccineSheet == null) return null;
 
